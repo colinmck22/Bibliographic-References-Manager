@@ -23,6 +23,14 @@
                 </li>
             </ul>
 
+            <?php
+            //----------------------------
+            if($isLoggedIn):
+                require_once __DIR__ . '/admin/_links.php';
+            endif;
+            //----------------------------
+            ?>
+
         </nav>
     </nav>
 
