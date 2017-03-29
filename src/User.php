@@ -7,9 +7,9 @@ use Mattsmithdev\PdoCrud\DatabaseManager;
 class User extends DatabaseTable
 {
     const ROLE_PUBLIC = 1;
-    const ROLE_STUDENT = 2;
+    const ROLE_STUDENT = 4;
     const ROLE_LECTURER = 3;
-    const ROLE_ADMIN = 4;
+    const ROLE_ADMIN = 2;
 
     private $id;
     private $username;
