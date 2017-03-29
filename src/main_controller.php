@@ -30,7 +30,7 @@ function aboutAction()
     require_once __DIR__ . '/../templates/about.php';
 }
 
-function addToCart()
+function addToCart() 
 {
     // get the ID of product to add to cart
     $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
