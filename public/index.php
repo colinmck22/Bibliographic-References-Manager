@@ -9,7 +9,6 @@ define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
 define('DB_PASS', '');
 define('DB_NAME', 'product');
-use Itb\MainController;
 
 $action = filter_input(INPUT_GET,'action',FILTER_SANITIZE_STRING);
 
@@ -46,8 +45,15 @@ switch ($action){
         forgetSession();
         break;
 
+    case 'adminCodes':
+        adminCodesAction();
+        break;
+
+    case 'adminHome':
+        adminHomeAction();
+        break;
+
     default:
         indexAction();
-        //indexAction();
-
+        
 }
