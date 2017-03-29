@@ -186,3 +186,27 @@ function usernameFromSession()
 
     return $username;
 }
+
+function adminHomeAction()
+{
+    $isLoggedIn = isLoggedInFromSession();
+    if ($isLoggedIn){
+        $username = usernameFromSession();
+        require_once __DIR__ . '/../templates/admin/index.php';
+    } else {
+        $message = 'UNAUTHORIZED ACCESS - the Guards are on their way to arrest you ...';
+        require_once __DIR__ . '/../templates/message.php';
+    }
+}
+
+function adminCodesAction()
+{
+    $isLoggedIn = isLoggedInFromSession();
+    if ($isLoggedIn){
+        $username = usernameFromSession();
+        require_once __DIR__ . '/../templates/admin/codes.php';
+    } else {
+        $message = 'UNAUTHORIZED ACCESS - the Guards are on their way to arrest you ...';
+        require_once __DIR__ . '/../templates/message.php';
+    }
+}
