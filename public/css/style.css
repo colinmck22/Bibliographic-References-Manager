@@ -1,0 +1,42 @@
+table,
+td,
+th {
+    border: 0.1rem solid black;
+}
+
+td {
+   padding: 1rem;
+}
+
+input {
+    background-color: yellow;
+}
+
+input[type=submit] {
+    background-color: red;
+    color: yellow;
+}
+
+
+p.error {
+    padding: 1rem;
+    background-color: pink;
+}
+
+header {
+    background-color: lightgray;;
+    padding: 0.5rem;
+
+    display: flex;
+    align-items: center;;
+}
+
+header nav,
+header section {
+    flex: 1;
+}
+
+header section {
+    text-align: right;
+}
+
