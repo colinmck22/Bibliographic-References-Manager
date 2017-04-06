@@ -19,6 +19,9 @@
                     <a href="/">home</a>
                 </li>
                 <li>
+                    <a href="/index.php?action=public">public</a>
+                </li>
+                <li>
                     <a href="/index.php?action=about">about</a>
                 </li>
             </ul>
@@ -27,6 +30,21 @@
             //----------------------------
             if($isLoggedIn):
                 require_once __DIR__ . '/admin/_links.php';
+            endif;
+            //----------------------------
+            ?>
+
+            <?php
+            //----------------------------
+            if($isLoggedIn):
+                require_once __DIR__ . '/student/_links.php';
+            endif;
+            //----------------------------
+            ?>
+            <?php
+            //----------------------------
+            if($isLoggedIn):
+                require_once __DIR__ . '/lecturer/_links.php';
             endif;
             //----------------------------
             ?>

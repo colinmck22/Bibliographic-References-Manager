@@ -1,7 +1,10 @@
 <?php
 require_once '_header.php';
+
+use Mattsmithdev\PdoCrud\DatabaseTable;
+use Mattsmithdev\PdoCrud\DatabaseManager;
 ?>
-<h1>My Great Shop</h1>
+<h1>Bibliographic References Manager</h1>
 
 <table>
     <tr>
