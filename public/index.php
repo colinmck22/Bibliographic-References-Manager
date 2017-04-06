@@ -25,6 +25,10 @@ switch ($action){
         loginAction();
         break;
 
+    case 'public':
+        publicAction();
+        break;
+
     case 'about':
         aboutAction();
         break;
@@ -51,6 +55,22 @@ switch ($action){
 
     case 'adminHome':
         adminHomeAction();
+        break;
+
+    case 'studentCodes':
+        studentCodesAction();
+        break;
+
+    case 'studentHome':
+        studentHomeAction();
+        break;
+
+    case 'lecturerCodes':
+        lecturerCodesAction();
+        break;
+
+    case 'lecturerHome':
+        lecturerHomeAction();
         break;
 
     default:
