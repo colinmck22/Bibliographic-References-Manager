@@ -19,22 +19,23 @@ class UserRepository
         $joe->setPassword('bloggs');
         $joe->setRole(User::ROLE_STUDENT);
 
-        $admin = new User();
-        $admin->setId(3);
-        $admin->setUsername('colin');
-        $admin->setPassword('mckenna');
-        $matt->setRole(User::ROLE_LECTURER);
+        $colin = new User();
+        $colin->setId(3);
+        $colin->setUsername('colin');
+        $colin->setPassword('mckenna');
+        $colin->setRole(User::ROLE_LECTURER);
 
         $admin = new User();
         $admin->setId(4);
         $admin->setUsername('admin');
         $admin->setPassword('admin');
-        $matt->setRole(User::ROLE_ADMIN);
+        $admin->setRole(User::ROLE_ADMIN);
 
         // add users to the array
         $this->users[1] = $matt;
-        $this->users[2] = $admin;
-        $this->users[3] = $joe;
+        $this->users[2] = $joe;
+        $this->users[3] = $colin;
+        $this->users[4] = $admin;
     }
 
     public function getAll()

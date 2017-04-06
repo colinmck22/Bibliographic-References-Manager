@@ -1,5 +1,109 @@
 <?php
 
+use Itb\UserRepository;
+
+function adminHomeAction()
+{
+    $userRepository = new UserRepository();
+    $user = $userRepository->getOneByUsername($_SESSION['user']);
+    $role = $user->getRole();
+
+    $isLoggedIn = isLoggedInFromSession();
+    if ($role == 4){
+        $username = usernameFromSession();
+        require_once __DIR__ . '/../templates/admin/index.php';
+    } else {
+        $username = usernameFromSession();
+        $message = 'UNAUTHORIZED ACCESS - the Guards are on their way to arrest you ...';
+        require_once __DIR__ . '/../templates/message.php';
+    }
+}
+
+function adminCodesAction()
+{
+    $userRepository = new UserRepository();
+    $user = $userRepository->getOneByUsername($_SESSION['user']);
+    $role = $user->getRole();
+
+    $isLoggedIn = isLoggedInFromSession();
+    if ($role == 4){
+        $username = usernameFromSession();
+        require_once __DIR__ . '/../templates/admin/codes.php';
+    } else {
+        $username = usernameFromSession();
+        $message = 'UNAUTHORIZED ACCESS - the Guards are on their way to arrest you ...';
+        require_once __DIR__ . '/../templates/message.php';
+    }
+}
+
+function studentHomeAction()
+{
+    $userRepository = new UserRepository();
+    $user = $userRepository->getOneByUsername($_SESSION['user']);
+    $role = $user->getRole();
+
+    $isLoggedIn = isLoggedInFromSession();
+    if ($role == 2 | $role == 4){
+        $username = usernameFromSession();
+        require_once __DIR__ . '/../templates/student/index.php';
+    } else {
+        $username = usernameFromSession();
+        $message = 'UNAUTHORIZED ACCESS - the students are on their way to arrest you ...';
+        require_once __DIR__ . '/../templates/message.php';
+    }
+}
+
+function studentCodesAction()
+{
+    $userRepository = new UserRepository();
+    $user = $userRepository->getOneByUsername($_SESSION['user']);
+    $role = $user->getRole();
+
+    $isLoggedIn = isLoggedInFromSession();
+    if ($role == 2 | $role == 4){
+        $username = usernameFromSession();
+        require_once __DIR__ . '/../templates/student/codes.php';
+    } else {
+        $username = usernameFromSession();
+        $message = 'UNAUTHORIZED ACCESS - the students are on their way to arrest you ...';
+        require_once __DIR__ . '/../templates/message.php';
+    }
+}
+
+function lecturerHomeAction()
+{
+    $userRepository = new UserRepository();
+    $user = $userRepository->getOneByUsername($_SESSION['user']);
+    $role = $user->getRole();
+
+    $isLoggedIn = isLoggedInFromSession();
+    if ($role == 3 | $role == 4){
+        $username = usernameFromSession();
+        require_once __DIR__ . '/../templates/lecturer/index.php';
+    } else {
+        $username = usernameFromSession();
+        $message = 'UNAUTHORIZED ACCESS - the lecturers are on their way to arrest you ...';
+        require_once __DIR__ . '/../templates/message.php';
+    }
+}
+
+function lecturerCodesAction()
+{
+    $userRepository = new UserRepository();
+    $user = $userRepository->getOneByUsername($_SESSION['user']);
+    $role = $user->getRole();
+
+    $isLoggedIn = isLoggedInFromSession();
+    if ($role == 3 | $role == 4){
+        $username = usernameFromSession();
+        require_once __DIR__ . '/../templates/lecturer/codes.php';
+    } else {
+        $username = usernameFromSession();
+        $message = 'UNAUTHORIZED ACCESS - the lecturers are on their way to arrest you ...';
+        require_once __DIR__ . '/../templates/message.php';
+    }
+}
+
 
 function indexAction()
 {
@@ -30,7 +134,15 @@ function aboutAction()
     require_once __DIR__ . '/../templates/about.php';
 }
 
-function addToCart() 
+function publicAction()
+{
+    $isLoggedIn = isLoggedInFromSession();
+    $username = usernameFromSession();
+
+    require_once __DIR__ . '/../templates/publicPage.php';
+}
+
+function addToCart()
 {
     // get the ID of product to add to cart
     $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
@@ -186,3 +298,4 @@ function usernameFromSession()
 
     return $username;
 }
+
