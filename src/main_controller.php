@@ -298,4 +298,3 @@ function usernameFromSession()
 
     return $username;
 }
-
