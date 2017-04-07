@@ -1,42 +1,19 @@
-table,
-td,
-th {
-    border: 0.1rem solid black;
+html {
+    font-size: 14pt;
 }
 
+th,
 td {
-   padding: 1rem;
+    width: 10rem;
 }
 
-input {
-    background-color: yellow;
+table,
+th,
+td {
+    border: 1px solid black;
 }
-
-input[type=submit] {
-    background-color: red;
-    color: yellow;
-}
-
 
 p.error {
     padding: 1rem;
     background-color: pink;
 }
-
-header {
-    background-color: lightgray;;
-    padding: 0.5rem;
-
-    display: flex;
-    align-items: center;;
-}
-
-header nav,
-header section {
-    flex: 1;
-}
-
-header section {
-    text-align: right;
-}
-
