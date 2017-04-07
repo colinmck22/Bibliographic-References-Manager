@@ -1,0 +1,95 @@
+{#----------------#}
+{# templates/_base.html.twig #}
+{#----------------#}
+
+{# -------- attempt to retrieve object 'user' from inside the session #}
+{% set user = app.session.get('user') %}
+
+{# -------- attempt to retrieve item with key 'username' from object 'user' from inside the session #}
+{% if user is defined %}
+    {% if user['username'] is defined %}
+        {% set username = user['username'] %}
+    {% endif %}
+{% endif %}
+
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>MGW - {% block title %}{% endblock %}</title>
+    <style>
+        @import '/css/style.css';
+    </style>
+</head>
+<body>
+
+<!-- login header -->
+<header>
+
+
+    <!-- nav -->
+    <nav>
+        <ul>
+            <lu>
+                <a href="/">home</a>
+            </lu>
+            <lu>
+                <a href="/public">public</a>
+            </lu>
+            <lu>
+                <a href="/about">about</a>
+            </lu>
+
+
+            {# --------- secure links - only if logged in ----------- #}
+            {% if username is defined %}
+                <lu>
+                    <hr>
+                    <a href="/admin">secure Admin home</a>
+                </lu>
+
+                <lu>
+                    <a href="/admin/codes">secret codes list</a>
+                </lu>
+                <lu>
+                    <a href="/lecturer">lecturer - home</a>
+                </lu>
+                <lu>
+                    <a href="/lecturer/codes">lecturer - codes</a>
+                </lu>
+                <lu>
+                    <a href="/student">student - home</a>
+                </lu>
+                <lu>
+                    <a href="/student/codes">student - codes</a>
+                </lu>
+            {% endif %}
+
+        </ul>
+    </nav>
+
+
+    <!-- login / logout -->
+    <section>
+        {% if username is defined %}
+            you are logged in as: {{ username }}
+            <br>
+            <a href="/logout">logout</a>
+        {% else %}
+            <a href="/login">login</a>
+        {% endif %}
+    </section>
+
+
+</header>
+
+
+
+<hr>
+
+{% block main %}
+{% endblock %}
+
+</body>
+</html>
