@@ -1,0 +1,17 @@
+{% extends '_base.html.twig' %}
+
+ {% block pageTitle %}list page{% endblock %}
+
+ {% block main %}
+
+     <h1>Users</h1>
+
+     <table>
+         {% for user in users%}
+             <tr>
+                 <td><a href="/show/{{ user.id }}"> {{ user.password}}</a></td>
+             </tr>
+         {% endfor %}
+     </table>
+
+ {% endblock %}
