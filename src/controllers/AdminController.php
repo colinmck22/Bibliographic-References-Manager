@@ -20,18 +20,29 @@ class AdminController
 
         // check we are authenticated --------
         $isAuthenticated = (null != $username);
-        if(!$isAuthenticated){
+        if (!$isAuthenticated) {
             // not authenticated, so redirect to LOGIN page
             return $this->app->redirect('/login');
         }
 
-        // store username into args array
-        $argsArray = [];
+        if ($username == 'admin') {
+            // store username into args array
+            $argsArray = [];
 
-        // render (draw) template
-        // ------------
-        $templateName = 'admin/index';
-        return $this->app['twig']->render($templateName . '.html.twig', $argsArray);
+            // render (draw) template
+            // ------------
+            $templateName = 'admin/index';
+            return $this->app['twig']->render($templateName . '.html.twig', $argsArray);
+        }
+        else{
+            // store username into args array
+            $argsArray = [];
+
+            // render (draw) template
+            // ------------
+            $templateName = '/noAccess';
+            return $this->app['twig']->render($templateName . '.html.twig', $argsArray);
+        }
     }
 
     // action for route:    /adminCodes
@@ -48,6 +59,7 @@ class AdminController
             return $this->app->redirect('/login');
         }
 
+        if ($username == 'admin') {
         // store username into args array
         $argsArray = [];
 
@@ -55,6 +67,16 @@ class AdminController
         // ------------
         $templateName = 'admin/codes';
         return $this->app['twig']->render($templateName . '.html.twig', $argsArray);
+        }
+        else{
+            // store username into args array
+            $argsArray = [];
+
+            // render (draw) template
+            // ------------
+            $templateName = '/noAccess';
+            return $this->app['twig']->render($templateName . '.html.twig', $argsArray);
+        }
     }
 
     /**

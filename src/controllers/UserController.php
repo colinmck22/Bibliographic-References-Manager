@@ -46,12 +46,30 @@ class UserController
         $password = $request->get('password');
 
         // authenticate!
-        if ('user' === $username && 'user' === $password) {
+        if ('admin' === $username && 'admin' === $password) {
             // store username in 'user' in 'session'
             $this->app['session']->set('user', array('username' => $username) );
 
             // success - redirect to the secure admin home page
             return $this->app->redirect('/admin');
+        }
+
+        // authenticate!
+        else if ('lecturer' === $username && 'lecturer' === $password) {
+            // store username in 'user' in 'session'
+            $this->app['session']->set('user', array('username' => $username) );
+
+            // success - redirect to the secure admin home page
+            return $this->app->redirect('/lecturer');
+        }
+
+        // authenticate!
+        else if ('student' === $username && 'student' === $password) {
+            // store username in 'user' in 'session'
+            $this->app['session']->set('user', array('username' => $username) );
+
+            // success - redirect to the secure admin home page
+            return $this->app->redirect('/student');
         }
 
         // login page with error message

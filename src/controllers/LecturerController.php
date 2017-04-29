@@ -25,6 +25,7 @@ class LecturerController
             return $this->app->redirect('/login');
         }
 
+        if ($username == 'lecturer' || $username == 'admin') {
         // store username into args array
         $argsArray = [];
 
@@ -32,6 +33,16 @@ class LecturerController
         // ------------
         $templateName = 'lecturer/index';
         return $this->app['twig']->render($templateName . '.html.twig', $argsArray);
+        }
+        else{
+        // store username into args array
+        $argsArray = [];
+
+        // render (draw) template
+        // ------------
+        $templateName = '/noAccess';
+        return $this->app['twig']->render($templateName . '.html.twig', $argsArray);
+    }
     }
 
     // action for route:    /lecturerCodes
@@ -48,6 +59,7 @@ class LecturerController
             return $this->app->redirect('/login');
         }
 
+        if ($username == 'admin' || $username == 'lecturer') {
         // store username into args array
         $argsArray = [];
 
@@ -55,6 +67,16 @@ class LecturerController
         // ------------
         $templateName = 'lecturer/codes';
         return $this->app['twig']->render($templateName . '.html.twig', $argsArray);
+        }
+        else{
+            // store username into args array
+            $argsArray = [];
+
+            // render (draw) template
+            // ------------
+            $templateName = '/noAccess';
+            return $this->app['twig']->render($templateName . '.html.twig', $argsArray);
+        }
     }
 
     /**
