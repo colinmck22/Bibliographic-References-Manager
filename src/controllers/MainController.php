@@ -42,7 +42,7 @@ class MainController
         return $this->app['twig']->render($templateName . '.html.twig', $argsArray);
     }
 
-    public function cartAction(){
+  public function cartAction(){
 
         $argsArray = [];
         $templateName = 'cart';
@@ -85,7 +85,6 @@ class MainController
         return null;
     }
 
-
 //--------- helper public functions -------
 
 
@@ -112,5 +111,4 @@ class MainController
 
         return $username;
     }
-
 }

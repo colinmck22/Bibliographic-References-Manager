@@ -2,7 +2,6 @@
 
 namespace Itb\Controllers;
 
-
 class UserController
 {
     private $app;

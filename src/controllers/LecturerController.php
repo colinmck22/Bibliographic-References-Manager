@@ -18,6 +18,7 @@ class LecturerController
         // test if 'username' stored in session ...
         $username = $this->getAuthenticatedUserName();
 
+
         $user = new \Itb\Model\User();
         $user = $user->getOneByUsername($username);
         $role = $user->getRole();
@@ -26,11 +27,14 @@ class LecturerController
         // check we are authenticated --------
         $isAuthenticated = (null != $username);
         if (!$isAuthenticated) {
+
             // not authenticated, so redirect to LOGIN page
             return $this->app->redirect('/login');
         }
 
+
         if ($role == 3 || $role == 4) {
+
         // store username into args array
         $argsArray = [];
 
@@ -65,11 +69,14 @@ class LecturerController
         // check we are authenticated --------
         $isAuthenticated = (null != $username);
         if (!$isAuthenticated) {
+
             // not authenticated, so redirect to LOGIN page
             return $this->app->redirect('/login');
         }
 
+
         if ($role == 4 || $role == 3) {
+
         // store username into args array
         $argsArray = [];
 
