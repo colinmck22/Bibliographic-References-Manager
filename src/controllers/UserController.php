@@ -2,9 +2,6 @@
 
 namespace Itb\Controllers;
 
-use Itb\Model\User;
-use Itb\Model\UserRepository;
-
 class UserController
 {
     private $app;
@@ -45,31 +42,34 @@ class UserController
         $username = $request->get('username');
         $password = $request->get('password');
 
+        $user = new \Itb\Model\User();
+        $user = $user->getOneByUsername($username);
+        $role = $user->getRole();
+
+        $isLoggedIn = $user->canFindMatchingUsernameAndPassword($username, $password);
+
         // authenticate!
-        if ('admin' === $username && 'admin' === $password) {
+        if ($isLoggedIn && $role == 4) {
             // store username in 'user' in 'session'
-            $this->app['session']->set('user', array('username' => $username) );
+            $this->app['session']->set('user', array('username' => $username));
 
             // success - redirect to the secure admin home page
             return $this->app->redirect('/admin');
         }
-
-        // authenticate!
-        else if ('lecturer' === $username && 'lecturer' === $password) {
-            // store username in 'user' in 'session'
-            $this->app['session']->set('user', array('username' => $username) );
-
-            // success - redirect to the secure admin home page
-            return $this->app->redirect('/lecturer');
-        }
-
-        // authenticate!
-        else if ('student' === $username && 'student' === $password) {
+        else if($isLoggedIn && $role == 2) {
             // store username in 'user' in 'session'
             $this->app['session']->set('user', array('username' => $username) );
 
             // success - redirect to the secure admin home page
             return $this->app->redirect('/student');
+        }
+        // authenticate!
+        else if ($isLoggedIn && $role == 3) {
+            // store username in 'user' in 'session'
+            $this->app['session']->set('user', array('username' => $username) );
+
+            // success - redirect to the secure admin home page
+            return $this->app->redirect('/lecturer');
         }
 
         // login page with error message
@@ -81,5 +81,4 @@ class UserController
 
         return $this->app['twig']->render($templateName . '.html.twig', $argsArray);
     }
-
 }

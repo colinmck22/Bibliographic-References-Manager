@@ -18,14 +18,20 @@ class StudentController
         // test if 'username' stored in session ...
         $username = $this->getAuthenticatedUserName();
 
+        $user = new \Itb\Model\User();
+        $user = $user->getOneByUsername($username);
+        $role = $user->getRole();
+
+
         // check we are authenticated --------
         $isAuthenticated = (null != $username);
-        if(!$isAuthenticated){
+        if (!$isAuthenticated) {
+
             // not authenticated, so redirect to LOGIN page
             return $this->app->redirect('/login');
         }
 
-        if ($username == 'lecturer' || $username == 'admin' || $username == 'student') {
+        if ($role == 2 || $role == 3 || $role == 4) {
         // store username into args array
         $argsArray = [];
 
@@ -52,14 +58,19 @@ class StudentController
         // test if 'username' stored in session ...
         $username = $this->getAuthenticatedUserName();
 
+        $user = new \Itb\Model\User();
+        $user = $user->getOneByUsername($username);
+        $role = $user->getRole();
+
+
         // check we are authenticated --------
         $isAuthenticated = (null != $username);
-        if(!$isAuthenticated){
+        if (!$isAuthenticated) {
             // not authenticated, so redirect to LOGIN page
             return $this->app->redirect('/login');
         }
 
-        if ($username == 'lecturer' || $username == 'admin' || $username == 'student') {
+        if ($role == 4 || $role == 3 || $role == 2) {
         // store username into args array
         $argsArray = [];
 

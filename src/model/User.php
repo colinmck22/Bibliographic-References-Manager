@@ -1,8 +1,10 @@
 <?php
 namespace Itb\Model;
 
+use Mattsmithdev\PdoCrud\DatabaseTable;
+use Mattsmithdev\PdoCrud\DatabaseManager;
 
-class User
+class User extends DatabaseTable
 {
     const ROLE_PUBLIC = 1;
     const ROLE_STUDENT = 2;
@@ -81,5 +83,55 @@ class User
         $this->password = $hashedPassword;
     }
 
+    /**
+     * return success (or not) of attempting to find matching username/password in the repo
+     * @param $username
+     * @param $password
+     *
+     * @return bool
+     */
+    public function canFindMatchingUsernameAndPassword($username, $password)
+    {
+        $user = User::getOneByUsername($username);
+
+        // if no record has this username, return FALSE
+        if(null == $user){
+            return false;
+        }
+
+        // hashed correct password
+        $hashedStoredPassword = $user->getPassword();
+
+        // return whether or not hash of input password matches stored hash
+        if($password == $hashedStoredPassword)
+            return true;
+    }
+
+    /**
+     * if record exists with $username, return User object for that record
+     * otherwise return 'null'
+     *
+     * @param $username
+     *
+     * @return mixed|null
+     */
+    public static function getOneByUsername($username)
+    {
+
+        $db = new DatabaseManager();
+        $connection = $db->getDbh();
+
+        $sql = 'SELECT * FROM users WHERE username=:username';
+        $statement = $connection->prepare($sql);
+        $statement->bindParam(':username', $username, \PDO::PARAM_STR);
+        $statement->setFetchMode(\PDO::FETCH_CLASS, __CLASS__);
+        $statement->execute();
+
+        if ($object = $statement->fetch()) {
+            return $object;
+        } else {
+            return null;
+        }
+    }
 
 }

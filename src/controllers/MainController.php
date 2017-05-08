@@ -42,6 +42,13 @@ class MainController
         return $this->app['twig']->render($templateName . '.html.twig', $argsArray);
     }
 
+  public function cartAction(){
+
+        $argsArray = [];
+        $templateName = 'cart';
+        return $this->app['twig']->render($templateName . '.html.twig', $argsArray);
+    }
+
     public function showAction($id)
     {
         // get reference to our repository
@@ -65,32 +72,17 @@ class MainController
         $this->app->abort(400, $errorMessage);
     }
 
-    /*
     public function getOneByUsername($username) {
         $userRepository = new \Itb\Model\UserRepository();
         $users = $userRepository->getAll();
 
+        $isLoggedIn = is_logged_in_from_session();
         foreach ($users as $user){
             if($user == $username){
                 return $user;
             }
         }
         return null;
-    }
-
-    public function canFindMatchingUsernameAndPassword($username, $password){
-        $user = $this->getOneByUsername($username);
-
-        // if no record has this username, return FALSE
-        if(null == $user){
-            return false;
-        }
-
-        // hashed correct password
-        $hashedStoredPassword = $user;
-
-        // return whether or not hash of input password matches stored hash
-        return password_verify($password, $hashedStoredPassword);
     }
 
 //--------- helper public functions -------
@@ -119,5 +111,4 @@ class MainController
 
         return $username;
     }
-   */
 }

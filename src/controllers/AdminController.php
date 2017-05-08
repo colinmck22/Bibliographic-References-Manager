@@ -15,76 +15,87 @@ class AdminController
     // will we allow access to the Admin home?
     public function indexAction()
     {
-        // test if 'username' stored in session ...
-        $username = $this->getAuthenticatedUserName();
+                // test if 'username' stored in session ...
+                $username = $this->getAuthenticatedUserName();
 
-        // check we are authenticated --------
-        $isAuthenticated = (null != $username);
-        if (!$isAuthenticated) {
-            // not authenticated, so redirect to LOGIN page
-            return $this->app->redirect('/login');
-        }
+                $user = new \Itb\Model\User();
+                $user = $user->getOneByUsername($username);
+                $role = $user->getRole();
 
-        if ($username == 'admin') {
-            // store username into args array
-            $argsArray = [];
 
-            // render (draw) template
-            // ------------
-            $templateName = 'admin/index';
-            return $this->app['twig']->render($templateName . '.html.twig', $argsArray);
-        }
-        else{
-            // store username into args array
-            $argsArray = [];
+                // check we are authenticated --------
+                $isAuthenticated = (null != $username);
+                if (!$isAuthenticated) {
+                    // not authenticated, so redirect to LOGIN page
+                    return $this->app->redirect('/login');
+                }
 
-            // render (draw) template
-            // ------------
-            $templateName = '/noAccess';
-            return $this->app['twig']->render($templateName . '.html.twig', $argsArray);
-        }
-    }
+                if ($role == 4) {
+                    // store username into args array
+                    $argsArray = [];
 
-    // action for route:    /adminCodes
-    // will we allow access to the Admin home?
-    public function codesAction()
-    {
-        // test if 'username' stored in session ...
-        $username = $this->getAuthenticatedUserName();
+                    // render (draw) template
+                    // ------------
+                    $templateName = 'admin/index';
+                    return $this->app['twig']->render($templateName . '.html.twig', $argsArray);
+                }
+                else{
+                    // store username into args array
+                    $argsArray = [];
 
-        // check we are authenticated --------
-        $isAuthenticated = (null != $username);
-        if(!$isAuthenticated){
-            // not authenticated, so redirect to LOGIN page
-            return $this->app->redirect('/login');
-        }
+                    // render (draw) template
+                    // ------------
+                    $templateName = '/noAccess';
+                    return $this->app['twig']->render($templateName . '.html.twig', $argsArray);
+                }
+            }
 
-        if ($username == 'admin') {
-        // store username into args array
-        $argsArray = [];
+            // action for route:    /adminCodes
+            // will we allow access to the Admin home?
+            public function codesAction()
+            {
+                // test if 'username' stored in session ...
+                $username = $this->getAuthenticatedUserName();
 
-        // render (draw) template
-        // ------------
-        $templateName = 'admin/codes';
-        return $this->app['twig']->render($templateName . '.html.twig', $argsArray);
-        }
-        else{
-            // store username into args array
-            $argsArray = [];
+                $user = new \Itb\Model\User();
+                $user = $user->getOneByUsername($username);
+                $role = $user->getRole();
 
-            // render (draw) template
-            // ------------
-            $templateName = '/noAccess';
-            return $this->app['twig']->render($templateName . '.html.twig', $argsArray);
-        }
-    }
 
-    /**
-     * if user logged-in, THEN return user's username
-     * if user not logged-in THEN return 'null'
-     *
-     * @return null (or string username)
-     */
+                // check we are authenticated --------
+                $isAuthenticated = (null != $username);
+                if (!$isAuthenticated) {
+                    // not authenticated, so redirect to LOGIN page
+                    return $this->app->redirect('/login');
+                }
+
+                if ($role == 4) {
+                // store username into args array
+                $argsArray = [];
+
+                // render (draw) template
+                // ------------
+                $templateName = 'admin/codes';
+                return $this->app['twig']->render($templateName . '.html.twig', $argsArray);
+                }
+                else{
+                    // store username into args array
+                    $argsArray = [];
+
+                    // render (draw) template
+                    // ------------
+                    $templateName = '/noAccess';
+                    return $this->app['twig']->render($templateName . '.html.twig', $argsArray);
+                }
+            }
+
+            /**
+             * if user logged-in, THEN return user's username
+             * if user not logged-in THEN return 'null'
+             *
+             * @return null (or string username)
+             */
+
     public function getAuthenticatedUserName()
     {
         // IF object (array) 'user' found with non-null value in 'session'
@@ -103,4 +114,5 @@ class AdminController
         // if we get here, we can return the value whose key is 'username'
         return $user['username'];
     }
+
 }

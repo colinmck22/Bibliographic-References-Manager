@@ -56,10 +56,11 @@ class WebApplication extends Application
         $this->get('/show', 'main.controller:showNoIdAction');
         $this->get('/public', 'main.controller:publicAction');
         $this->get('/about', 'main.controller:aboutAction');
+        $this->get('/cart', 'main.controller:cartAction');
 
         // ------ login routes GET and POST ------------
         $this->get('/login', 'user.controller:loginAction');
-        $this->post('/processLogin', 'user.controller:processLoginAction');
+        $this->post('/login', 'user.controller:processLoginAction');
 
         // ------ logout route GET ------------
         $this->get('/logout', 'user.controller:logoutAction');
