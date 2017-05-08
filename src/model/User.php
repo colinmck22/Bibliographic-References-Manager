@@ -1,23 +1,121 @@
 <?php
+/**
+ * namespace Itb\Model
+ */
 namespace Itb\Model;
 
+/**
+ * use databaseTable
+ */
 use Mattsmithdev\PdoCrud\DatabaseTable;
+/**
+ * use databaseManager
+ */
 use Mattsmithdev\PdoCrud\DatabaseManager;
 
+/**
+ * Class User extends DatabaseTable
+ * @package Itb\Model
+ */
 class User extends DatabaseTable
 {
+    /**
+     * define public role
+     * example:
+     * <code>
+     * 1
+     * </code>
+     * @var integer
+     */
     const ROLE_PUBLIC = 1;
+
+    /**
+     * define student role
+     * example:
+     * <code>
+     * 2
+     * </code>
+     * @var integer
+     */
     const ROLE_STUDENT = 2;
+
+    /**
+     * define lecturer role
+     * example:
+     * <code>
+     * 3
+     * </code>
+     * @var integer
+     */
     const ROLE_LECTURER = 3;
+
+    /**
+     * define admin role
+     * example:
+     * <code>
+     * 4
+     * </code>
+     * @var integer
+     */
     const ROLE_ADMIN = 4;
 
+    /**
+     * id of user (unique primary KEY)
+     *
+     * example:
+     * <code>
+     * 1234
+     * </code>
+     * @var integer
+     */
+
     private $id;
+
+    /**
+     * username
+     *
+     * example:
+     * <code>
+     * dave
+     * </code>
+     *
+     * @var string
+     */
     private $username;
+
+    /**
+     * user password
+     *
+     * example:
+     * <code>
+     * password
+     * </code>
+     *
+     * @var string
+     */
     private $password;
+
+    /**
+     * users role
+     *
+     * example:
+     * <code>
+     * 2
+     * </code>
+     *
+     * @var int
+     */
     private $role;
 
     /**
-     * @return mixed
+     * get the ID
+     *
+     * example usage:
+     *
+     * <code>
+     * return $this->id;
+     * </code>
+     * @return integer
      */
     public function getId()
     {
@@ -25,7 +123,14 @@ class User extends DatabaseTable
     }
 
     /**
-     * @param mixed $id
+     * set ID
+     *
+     * example usage:
+     *
+     * <code>
+     * $this->id = $id;
+     * </code>
+     * @param integer $id
      */
     public function setId($id)
     {
@@ -33,7 +138,8 @@ class User extends DatabaseTable
     }
 
     /**
-     * @return mixed
+     * get $username
+     * @return string $username
      */
     public function getUsername()
     {
@@ -41,7 +147,8 @@ class User extends DatabaseTable
     }
 
     /**
-     * @param mixed $username
+     * set username
+     * @param string $username
      */
     public function setUsername($username)
     {
@@ -49,7 +156,8 @@ class User extends DatabaseTable
     }
 
     /**
-     * @return mixed
+     * get $password
+     * @return string $password
      */
     public function getPassword()
     {
@@ -57,7 +165,8 @@ class User extends DatabaseTable
     }
 
     /**
-     * @return mixed
+     * get $role
+     * @return string $role
      */
     public function getRole()
     {
@@ -65,7 +174,8 @@ class User extends DatabaseTable
     }
 
     /**
-     * @param mixed $role
+     * set role
+     * @param string $role
      */
     public function setRole($role)
     {
@@ -73,8 +183,8 @@ class User extends DatabaseTable
     }
 
     /**
-     * hash the password before storing ...
-     * @param mixed $password
+     * set password
+     * @param string $password
      */
     public function setPassword($password)
     {
