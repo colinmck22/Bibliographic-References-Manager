@@ -1,0 +1,7 @@
+TAP version 13
+ok 1 - ItbTest\UserTest::testId
+ok 2 - ItbTest\UserTest::testUsername
+ok 3 - ItbTest\UserTest::testPassword
+ok 4 - ItbTest\UserTest::testRole
+ok 5 - ItbTest\UserTest::testGetOneByUsername
+1..5
