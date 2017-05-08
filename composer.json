@@ -1,17 +1,19 @@
 {
-    "require": {
-        "twig/twig": "^2.2",
-        "silex/silex": "~2.0",
-        "mattsmithdev/pdo-crud-for-free-repositories": "^0.8.0",
-        "mattsmithdev/pdo-crud-for-free": "^1.0"
-    },
-    "scripts":{
-        "run0":"php -S localhost:8888",
-        "run":"php -S localhost:8888 -t ./public"
-    },
-    "autoload": {
-        "psr-4" : {
-            "Itb\\": "src"
-        }
+  "autoload": {
+    "psr-4" : {
+      "Itb\\": "src"
     }
+  },
+  "require": {
+    "twig/twig": "^2.2",
+    "silex/silex": "~2.0",
+    "mattsmithdev/pdo-crud-for-free-repositories": "^0.8.0",
+    "mattsmithdev/pdo-crud-for-free": "^1.0"
+  },
+  "scripts":{
+    "doc": "php phpDocumentor.phar -d ./src -t ./src/documentation",
+    "run0":"php -S localhost:8888",
+    "run":"php -S localhost:8888 -t ./public",
+    "test":"php phpunit.phar"
+  }
 }
