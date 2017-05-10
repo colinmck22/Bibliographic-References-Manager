@@ -17,7 +17,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>MGW - {% block title %}{% endblock %}</title>
+    <title>MGW - {% block pageTitle %}{% endblock %}</title>
     <style>
         @import '/css/style.css';
     </style>
@@ -33,6 +33,18 @@
         <ul>
             <lu>
                 <a href="/">home</a>
+            </lu>
+            <lu>
+                <a href="/refs">REFs</a>
+            </lu>
+            <lu>
+                <a href="/newRefs">Submit New REFs</a>
+            </lu>
+            <lu>
+                <a href="/tags">Tags</a>
+            </lu>
+            <lu>
+                <a href="/lecturerBibs">Lecturer BIBs</a>
             </lu>
             <lu>
                 <a href="/public">public</a>
@@ -69,7 +81,6 @@
         </ul>
     </nav>
 
-
     <!-- login / logout -->
     <section>
         {% if username is defined %}
@@ -83,8 +94,6 @@
 
 
 </header>
-
-
 
 <hr>
 

@@ -1,0 +1,67 @@
+{# -------- attempt to retrieve object 'yes' from inside the session #}
+{% set yes = app.session.get('yes') %}
+
+{# -------- attempt to retrieve item with key 'yes' from object 'yes' from inside the session #}
+{% if yes is defined %}
+    {% if yes['yes'] is defined %}
+        {% set yes = yes['yes'] %}
+    {% endif %}
+{% endif %}
+
+{# -------- attempt to retrieve object 'no' from inside the session #}
+{% set no = app.session.get('no') %}
+
+{# -------- attempt to retrieve item with key 'no' from object 'no' from inside the session #}
+{% if no is defined %}
+    {% if no['no'] is defined %}
+        {% set no = no['no'] %}
+    {% endif %}
+{% endif %}
+
+{% extends '_base.html.twig' %}
+
+ {% block pageTitle %}TAGs{% endblock %}
+
+ {% block main %}
+
+     <h2>TAGs</h2>
+{% for ref in refs %}
+    <li>
+        <a href="/tags/{{ ref.id }}">{{ ref.tags }}</a>
+    </li>
+
+{% endfor %}
+
+     <h2>Proposed new TAGs</h2>
+
+     <ul>
+         Databases in PHP:
+
+         <strong>Vote:</strong>
+     </ul>
+             <form action="/tags" method="post">
+                 Yes:
+                 <input type="radio" name="vote" value="yes" checked>
+                 No:
+                 <input type="radio" name="vote" value="no">
+                 <input type="submit" value="Submit">
+
+             </form>
+
+     {% if yes or no is defined %}
+
+         <table>
+             <tr>
+                 <th>VOTES</th>
+                 <th>YES</th>
+                 <th>NO</th>
+             </tr>
+             <td></td>
+             <td>{{ yes }}</td>
+             <td>{{ no }}</td>
+         </table>
+
+     {% endif %}
+
+ {% endblock %}
+

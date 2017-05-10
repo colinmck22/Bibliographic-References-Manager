@@ -1,0 +1,32 @@
+{# -------- attempt to retrieve object 'ref' from inside the session #}
+{% set ref = app.session.get('ref') %}
+
+{# -------- attempt to retrieve item with key 'ref' from object 'ref' from inside the session #}
+{% if ref is defined %}
+    {% if ref['ref'] is defined %}
+        {% set ref = ref['ref'] %}
+    {% endif %}
+{% endif %}
+
+{% extends '_base.html.twig' %}
+
+ {% block pageTitle %}About page{% endblock %}
+
+ {% block main %}
+
+     <h2>Submit New REFSs</h2>
+
+     <form action="" method="post">
+         Enter One Suggested REF:
+         <input type="text" name="ref" value="">
+         <input type="submit" value="Submit">
+     </form>
+     <p>
+
+     {% if ref is defined %}
+
+         Thank you for suggesting: <strong>{{ ref }}</strong>
+
+     {% endif %}
+
+ {% endblock %}

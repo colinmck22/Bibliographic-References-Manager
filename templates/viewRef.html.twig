@@ -1,0 +1,19 @@
+{% extends '_base.html.twig' %}
+
+ {% block pageTitle %}About page{% endblock %}
+
+ {% block main %}
+
+     <h1>TAG Selected: {{ refs.tags }}</h1>
+     
+         <li>
+             {{ refs.title }}, {{ refs.author }},  {{ refs.year }}
+         </li>
+         <li>
+             Published by: {{ refs.publisher }}
+         </li>
+         <li>
+             <a href="{{ refs.place }}">{{ refs.place }}</a>
+         </li>
+     
+ {% endblock %}

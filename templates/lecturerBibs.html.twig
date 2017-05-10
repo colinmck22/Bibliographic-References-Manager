@@ -1,0 +1,15 @@
+{% extends '_base.html.twig' %}
+
+ {% block pageTitle %}Lecturer BIBs page{% endblock %}
+
+ {% block main %}
+
+     <h2>Lecturer BIBs</h2>
+     {% for ref in refs|sort %}
+         <li>
+             <a href="{{ ref.place }}">{{ ref.author }}</a>
+         </li>
+         <a href="/cart/{{ ref.id }}">(add to cart)</a>
+         <p>
+     {% endfor %}
+ {% endblock %}

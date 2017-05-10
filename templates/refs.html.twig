@@ -1,0 +1,28 @@
+{% extends '_base.html.twig' %}
+
+ {% block pageTitle %}REFs page{% endblock %}
+
+ {% block main %}
+
+     <h2>REFs</h2>
+     {% for ref in refs %}
+
+         <p>
+         <ul>
+             {{ ref.title }}, {{ ref.author }},  {{ ref.year }},
+         </ul>
+         <ul>
+             Published by: {{ ref.publisher }},
+         </ul>
+         <ul>
+             <a href="{{ ref.place }}">{{ ref.place }}</a>
+         </ul>
+        <ul>
+        <a href="/cart/{{ ref.id }}">(add to cart)</a>
+            <hr>
+        </ul>
+
+     {% endfor %}
+
+ {% endblock %}
+

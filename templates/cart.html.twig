@@ -1,24 +1,27 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>simple JSON</title>
-    <meta charset="UTF-8">
-    <!-- ********* can load JS before HTML body/DOM - since not used until button clicked ****** -->
-    <script src="js/ajax.js"></script>
-</head>
-<body>
+{% extends '_base.html.twig' %}
 
-<h1>Shopping today</h1>
+ {% block pageTitle %}About page{% endblock %}
 
-<button type="button" onclick="loadJSON(1)">load menu 1</button>
-<br>
-<button type="button" onclick="loadJSON(2)">load menu 2</button>
-<br>
-<button type="button" onclick="loadJSON(3)">load menu 3</button>
+ {% block main %}
 
-<div id="mainContent">
+     <h1>Cart List</h1>
 
-</div>
+     <table>
+         <tr>
+             <th>ID</th>
+             <th>Author</th>
+             <th>Year</th>
+             <th>Title</th>
+             <th>Publisher</th>
+             <th>Place</th>
+         </tr>
 
-</body>
-</html>
+         <td>{{ refs.id}}</td>
+         <td>{{ refs.author}}</td>
+         <td>{{ refs.year}}</td>
+         <td>{{ refs.title}}</td>
+         <td>{{ refs.publisher}}</td>
+         <td><a href="{{ refs.place}}">{{ refs.place}}</a></td>
+     </table>
+
+ {% endblock %}

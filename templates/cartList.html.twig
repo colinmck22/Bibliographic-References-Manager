@@ -1,0 +1,22 @@
+{% extends '_base.html.twig' %}
+
+ {% block pageTitle %}Cart List page{% endblock %}
+
+ {% block main %}
+
+     <h1>REFs List</h1>
+
+     <table>
+         <tr>
+             <th>REFs</th>
+             <th>(add to cart)</th>
+         </tr>
+
+         {% for ref in refs %}
+             <tr>
+                 <td>{{ ref.title}}</td><td><a href="/cart/{{ ref.id }}">(add to cart)</a></td>
+             </tr>
+         {% endfor %}
+     </table>
+
+ {% endblock %}
