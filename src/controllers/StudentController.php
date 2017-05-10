@@ -26,7 +26,6 @@ class StudentController
         // check we are authenticated --------
         $isAuthenticated = (null != $username);
         if (!$isAuthenticated) {
-
             // not authenticated, so redirect to LOGIN page
             return $this->app->redirect('/login');
         }

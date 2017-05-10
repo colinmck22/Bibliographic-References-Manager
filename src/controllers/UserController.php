@@ -2,6 +2,7 @@
 
 namespace Itb\Controllers;
 
+
 class UserController
 {
     private $app;
@@ -68,7 +69,7 @@ class UserController
             // store username in 'user' in 'session'
             $this->app['session']->set('user', array('username' => $username) );
 
-            // success - redirect to the secure admin home page
+            // success - redirect to the secure lecturer home page
             return $this->app->redirect('/lecturer');
         }
 

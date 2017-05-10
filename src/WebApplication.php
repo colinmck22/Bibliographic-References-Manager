@@ -56,7 +56,19 @@ class WebApplication extends Application
         $this->get('/show', 'main.controller:showNoIdAction');
         $this->get('/public', 'main.controller:publicAction');
         $this->get('/about', 'main.controller:aboutAction');
-        $this->get('/cart', 'main.controller:cartAction');
+        $this->get('/cartList', 'main.controller:cartListAction');
+        $this->get('/cart', 'main.controller:showCartAction');
+        $this->get('/cart/{id}', 'main.controller:showCartAction');
+        $this->get('/addToCart/{id}', 'main.controller:addToCartAction');
+        $this->get('/removeFromCart', 'main.controller:removeFromCartAction');
+        $this->get('/emptyCart', 'main.controller:forgetSession');
+        $this->get('/refs', 'main.controller:refsAction');
+        $this->post('/newRefs', 'main.controller:newRefsAction');
+        $this->get('/newRefs', 'main.controller:newRefsAction');
+        $this->get('/lecturerBibs', 'main.controller:lecturerBibsAction');
+        $this->get('/tags', 'main.controller:tagsAction');
+        $this->get('/tags/{id}', 'main.controller:showTagAction');
+        $this->post('/tags', 'main.controller:votesAction');
 
         // ------ login routes GET and POST ------------
         $this->get('/login', 'user.controller:loginAction');
