@@ -7,13 +7,28 @@
      <h1>Users</h1>
 
      <table>
-         {% for user in users%}
-
+         <tr>
+             <th>Username</th>
+             <th>Password</th>
+             <th>Role</th>
+         </tr>
+         {% for user in users|sort|reverse %}
              <tr>
-                 <td><a href="/show/{{ user.id }}"> {{ user.username}}</a></td>
+                 <td>{{ user.username }}</td>
+                 <td>{{ user.password }}</td>
+                 <td>{{ user.role }}</td>
              </tr>
-
          {% endfor %}
      </table>
+
+     <p>
+         <strong>User Roles:</strong>
+         <br>
+         2 = Student
+         <br>
+         3 = Lecturer
+         <br>
+         4 = Admin
+     </p>
 
  {% endblock %}
